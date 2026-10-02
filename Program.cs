@@ -18,6 +18,8 @@ if (!app.Environment.IsDevelopment())
 
 app.Use(async (context, next) =>
 {
+    context.Response.Headers["X-Portfolio-Version"] = "cinematic-v2";
+    context.Response.Headers["Cache-Control"] = context.Request.Path.StartsWithSegments("/css") || context.Request.Path.StartsWithSegments("/js") ? "public,max-age=3600" : "no-cache,no-store,must-revalidate";
     context.Response.Headers["X-Content-Type-Options"] = "nosniff";
     context.Response.Headers["X-Frame-Options"] = "DENY";
     context.Response.Headers["Referrer-Policy"] = "strict-origin-when-cross-origin";
