@@ -129,3 +129,13 @@ body{overflow-x:hidden}
 .btn.danger:hover{background:rgba(255,96,112,.08)}
 @media(max-width:850px){.media-grid,.admin-grid{grid-template-columns:1fr}.admin-topbar{align-items:flex-start;flex-direction:column}.admin-media-item{grid-template-columns:72px 1fr}.admin-actions{grid-column:1/-1;justify-content:flex-start}.admin-thumb{width:72px;height:60px}}
 @media(max-width:560px){.media-grid{grid-template-columns:1fr}.gallery-page,.admin-shell{padding-top:80px}.admin-card{padding:20px}}
+
+.live-media-tile{min-height:240px;background:#080b10}
+.live-media-tile>img,.live-media-tile>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.95) brightness(.78);transition:transform .65s cubic-bezier(.2,.8,.2,1),filter .45s ease}
+.live-media-tile:before{z-index:3}
+.live-media-tile:after{z-index:2}
+.live-media-tile div{z-index:4;text-shadow:0 2px 18px rgba(0,0,0,.65)}
+.live-media-tile:hover>img,.live-media-tile:hover>video{transform:scale(1.055);filter:saturate(1.12) brightness(.9)}
+.live-media-tile .media-badge{position:absolute;top:16px;right:16px;z-index:4;padding:6px 9px;border-radius:999px;background:rgba(5,8,12,.65);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(12px);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.live-tiles .tile:nth-child(1){grid-row:span 2}
+@media(max-width:850px){.live-tiles .tile:nth-child(1){grid-row:auto}}
