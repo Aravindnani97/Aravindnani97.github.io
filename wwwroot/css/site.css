@@ -275,3 +275,40 @@ radial-gradient(circle at 72% 30%,rgba(15,114,255,.15),transparent 28%);pointer-
   .anime-portrait{object-position:center 10%}
   .capability-grid{margin-top:8px}
 }
+
+/* ===== v4 unmistakable visual refresh ===== */
+.ref-hero-v4{
+  background:
+    radial-gradient(circle at 78% 20%,rgba(0,122,255,.22),transparent 26%),
+    radial-gradient(circle at 86% 54%,rgba(255,128,54,.14),transparent 18%),
+    linear-gradient(180deg,#07111f 0%,#06101c 100%);
+}
+.ref-hero-v4 .ref-hero-grid{min-height:610px}
+.ref-hero-v4 .ref-copy h1{font-size:clamp(64px,7.4vw,108px);line-height:.91}
+.ref-hero-v4 .ref-copy h1 strong{max-width:760px}
+.ref-hero-v4 .anime-stage{height:610px}
+.ref-hero-v4 .anime-frame{
+  width:min(660px,100%);
+  filter:drop-shadow(0 32px 55px rgba(0,0,0,.55));
+}
+.ref-hero-v4 .anime-stage:after{
+  content:"";
+  position:absolute;
+  width:94%;
+  height:74%;
+  right:-4%;
+  bottom:2%;
+  z-index:-4;
+  background:
+    linear-gradient(135deg,transparent 0 18%,rgba(0,102,255,.72) 21% 38%,transparent 40%),
+    linear-gradient(145deg,transparent 25%,rgba(17,183,255,.55) 31% 48%,transparent 50%),
+    linear-gradient(155deg,transparent 45%,rgba(255,146,64,.72) 53% 64%,transparent 66%);
+  clip-path:polygon(0 65%,12% 51%,24% 57%,32% 30%,44% 42%,57% 12%,63% 40%,77% 18%,74% 48%,100% 32%,88% 66%,100% 77%,74% 75%,60% 100%,42% 77%,18% 93%);
+  opacity:.95;
+}
+.ref-hero-v4 .capability-grid{margin-top:-76px}
+.ref-hero-v4 .cap-card{min-height:215px}
+@media(max-width:1000px){
+  .ref-hero-v4 .anime-stage{height:500px}
+  .ref-hero-v4 .capability-grid{margin-top:8px}
+}
