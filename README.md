@@ -1,17 +1,26 @@
-# Aravind Mallaiahgari — Portfolio
+# Aravind Mallaiahgari Portfolio — ASP.NET Core MVC
 
-Personal portfolio for software engineering, AI-enabled application work, photography, and video editing.
+Production-ready personal portfolio built with ASP.NET Core MVC (.NET 8).
+
+## Stack
+- ASP.NET Core MVC
+- Razor Views
+- .NET 8
+- Docker
+- Render deployment
 
 ## Security
-- Static-only deployment: no server, database, admin panel, or credentials.
-- No third-party JavaScript libraries.
-- Content Security Policy included in the page.
-- External links use rel="noopener noreferrer".
-- Referrer policy is restricted.
-- HTTPS is provided by GitHub Pages when Pages is enabled.
+- HTTPS redirection
+- HSTS in production
+- Content Security Policy
+- X-Frame-Options: DENY
+- X-Content-Type-Options: nosniff
+- restrictive Permissions-Policy
+- strict Referrer-Policy
+- no database
+- no secrets in source
+- no third-party JavaScript
+- health endpoint at /health
 
-## Portfolio
-- Software engineering experience
-- .NET / React / JavaScript / Python / Java / cloud / AI skills
-- Education and certifications
-- Photography and video editing: @camlens.img
+## Deploy free on Render
+This repository includes Dockerfile and render.yaml for a free Render Web Service with managed HTTPS.
