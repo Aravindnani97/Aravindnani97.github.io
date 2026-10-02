@@ -312,3 +312,53 @@ radial-gradient(circle at 72% 30%,rgba(15,114,255,.15),transparent 28%);pointer-
   .ref-hero-v4 .anime-stage{height:500px}
   .ref-hero-v4 .capability-grid{margin-top:8px}
 }
+
+
+/* ===== Neo hero rebuild: isolated from legacy hero styles ===== */
+.neo-hero{position:relative;overflow:hidden;padding:38px 0 26px;background:
+linear-gradient(180deg,rgba(4,12,24,.98),rgba(6,18,34,.98)),
+radial-gradient(circle at 78% 22%,rgba(30,120,255,.24),transparent 30%);
+isolation:isolate}
+.neo-hero:before{content:"";position:absolute;inset:0;background:
+linear-gradient(125deg,transparent 0 42%,rgba(0,116,255,.06) 43% 45%,transparent 46%),
+linear-gradient(155deg,transparent 0 62%,rgba(255,132,55,.045) 63% 65%,transparent 66%);pointer-events:none}
+.neo-bg-orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.3;pointer-events:none}
+.neo-orb-a{width:420px;height:420px;background:#0b6dff;right:8%;top:4%}
+.neo-orb-b{width:260px;height:260px;background:#ff8a3d;right:-4%;top:38%;opacity:.18}
+.neo-shell{position:relative;z-index:2}
+.neo-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:18px;align-items:center;min-height:560px}
+.neo-copy{padding-top:14px}
+.neo-kicker{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border:1px solid rgba(49,148,255,.38);border-radius:999px;background:rgba(5,17,34,.64);font-size:10px;letter-spacing:.14em;color:#d9e7fb;text-transform:uppercase}
+.neo-kicker span{width:8px;height:8px;border-radius:50%;background:#1fc0ff;box-shadow:0 0 16px #1fc0ff}.neo-kicker i{font-style:normal;color:#4b6583}
+.neo-copy h1{margin:24px 0 22px;line-height:.9;letter-spacing:-.055em}
+.neo-copy h1 small{display:block;font-size:clamp(48px,5.7vw,76px);color:#fff;font-weight:850}
+.neo-copy h1 strong,.neo-copy h1 em{display:block;font-style:normal;font-size:clamp(66px,7.8vw,112px);font-weight:900}
+.neo-copy h1 strong{color:#fff}.neo-copy h1 em{background:linear-gradient(90deg,#1380ff 5%,#24c1ff 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.neo-copy>p{max-width:640px;font-size:18px;line-height:1.7;color:#b5c4d8;margin:0}.neo-copy>p b{color:#e7f4ff}
+.neo-actions{display:flex;gap:14px;flex-wrap:wrap;margin:30px 0 20px}
+.neo-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border-radius:14px;border:1px solid rgba(55,145,255,.42);background:rgba(8,21,40,.64);font-weight:800;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.neo-btn:hover{transform:translateY(-3px);border-color:#36a8ff;box-shadow:0 15px 35px rgba(0,0,0,.22)}
+.neo-primary{background:linear-gradient(135deg,#17b6ff,#176bff);border-color:transparent;box-shadow:0 16px 40px rgba(15,122,255,.28)}
+.neo-socials{display:flex;gap:12px}
+.neo-socials a{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(68,145,255,.3);background:rgba(5,15,30,.72);font-size:12px;font-weight:850;transition:.2s ease}
+.neo-socials a:hover{transform:translateY(-3px);border-color:#29aaff;color:#29aaff}
+.neo-visual{position:relative;height:570px;display:flex;justify-content:center;align-items:flex-end}
+.neo-portrait{position:relative;z-index:5;width:min(590px,96%);height:auto;max-height:560px;object-fit:contain;filter:drop-shadow(0 34px 45px rgba(0,0,0,.48));user-select:none;-webkit-user-drag:none;animation:neoFloat 5s ease-in-out infinite}
+.neo-ring{position:absolute;border-radius:50%;border:1px solid rgba(86,160,255,.26);left:50%;transform:translateX(-50%);z-index:1}
+.neo-ring-1{width:440px;height:440px;top:56px;animation:neoPulse 6s ease-in-out infinite}
+.neo-ring-2{width:520px;height:520px;top:18px;animation:neoPulse 7.5s ease-in-out infinite reverse}
+.neo-brush{position:absolute;z-index:2;filter:saturate(1.18);opacity:.92}
+.neo-brush-blue{width:86%;height:58%;right:-2%;bottom:44px;background:linear-gradient(135deg,transparent 8%,#0656ff 26%,#16b8ff 53%,transparent 72%);clip-path:polygon(0 70%,18% 43%,32% 52%,45% 18%,58% 43%,74% 11%,79% 41%,100% 21%,86% 68%,100% 77%,72% 79%,59% 100%,42% 79%,21% 93%)}
+.neo-brush-orange{width:54%;height:38%;right:1%;bottom:88px;background:linear-gradient(135deg,transparent 10%,#ff7d2c 45%,#ffc063 64%,transparent 78%);clip-path:polygon(0 75%,18% 48%,35% 58%,49% 23%,66% 53%,100% 22%,84% 70%,100% 78%,65% 78%,45% 100%,30% 75%);opacity:.78}
+.neo-signature{position:absolute;right:5%;top:20%;z-index:6;color:#6fb7ff;font-size:18px;font-style:italic;transform:rotate(-7deg);letter-spacing:.04em;opacity:.75}
+.neo-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:-36px;position:relative;z-index:8}
+.neo-card{min-height:188px;padding:22px;border-radius:20px;border:1px solid rgba(72,140,255,.26);background:linear-gradient(150deg,rgba(10,28,52,.92),rgba(5,15,30,.97));display:grid;grid-template-columns:auto 1fr auto;gap:15px;align-items:start;position:relative;overflow:hidden;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.neo-card:after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:currentColor;opacity:.8}
+.neo-card:hover{transform:translateY(-7px);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.neo-card-icon{width:44px;height:44px;border-radius:12px;border:1px solid currentColor;display:grid;place-items:center;font-weight:900}
+.neo-card h3{font-size:20px;margin:3px 0 8px}.neo-card p{margin:0;color:#aab9cd;font-size:13.5px;line-height:1.55}.neo-card>b{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid currentColor;align-self:end}
+.c-blue{color:#23b8ff}.c-purple{color:#9c63ff}.c-orange{color:#ff923f}.c-green{color:#48e8b3}
+.neo-scroll{display:flex;flex-direction:column;align-items:center;width:max-content;margin:18px auto 0;color:#7f95b2;font-size:12px}.neo-scroll span{font-size:22px;animation:neoBob 1.5s ease-in-out infinite}
+@keyframes neoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}@keyframes neoPulse{0%,100%{opacity:.4;transform:translateX(-50%) scale(1)}50%{opacity:.8;transform:translateX(-50%) scale(1.035)}}@keyframes neoBob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@media(max-width:1040px){.neo-grid{grid-template-columns:1fr}.neo-copy{text-align:center}.neo-kicker{margin:auto}.neo-copy>p{margin-inline:auto}.neo-actions,.neo-socials{justify-content:center}.neo-visual{height:500px}.neo-cards{grid-template-columns:repeat(2,1fr);margin-top:0}.neo-signature{right:15%}}
+@media(max-width:650px){.neo-hero{padding-top:26px}.neo-copy h1 small{font-size:44px}.neo-copy h1 strong,.neo-copy h1 em{font-size:58px}.neo-copy>p{font-size:16px}.neo-visual{height:390px}.neo-portrait{max-height:380px}.neo-ring-1{width:300px;height:300px}.neo-ring-2{width:350px;height:350px}.neo-cards{grid-template-columns:1fr}.neo-card{min-height:150px}.neo-signature{display:none}}
