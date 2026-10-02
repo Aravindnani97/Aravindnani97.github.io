@@ -1,6 +1,6 @@
 # Aravind Mallaiahgari Portfolio — ASP.NET Core MVC
 
-Production-ready personal portfolio built with ASP.NET Core MVC (.NET 8).
+Production-ready personal portfolio built with **ASP.NET Core MVC (.NET 8)**.
 
 ## Stack
 - ASP.NET Core MVC
@@ -8,6 +8,7 @@ Production-ready personal portfolio built with ASP.NET Core MVC (.NET 8).
 - .NET 8
 - Docker
 - Render deployment
+- GitHub Actions CI
 
 ## Security
 - HTTPS redirection
@@ -20,7 +21,10 @@ Production-ready personal portfolio built with ASP.NET Core MVC (.NET 8).
 - no database
 - no secrets in source
 - no third-party JavaScript
-- health endpoint at /health
+- health endpoint at `/health`
 
 ## Deploy free on Render
-This repository includes Dockerfile and render.yaml for a free Render Web Service with managed HTTPS.
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Aravindnani97/Aravindnani97.github.io)
+
+The repository includes `render.yaml` and a Dockerfile. Render provides a managed HTTPS `*.onrender.com` address for the deployed web service.
