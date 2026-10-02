@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Admin Login";
+}
+<main class="admin-shell wrap">
+    <section class="admin-card">
+        <p class="eyebrow">Private Access</p>
+        <h1>Portfolio Admin</h1>
+        <p class="lead">Only the site owner can upload and manage media.</p>
+
+        @if (ViewBag.Configured is bool configured && !configured)
+        {
+            <div class="notice error">Supabase environment variables are not configured yet.</div>
+        }
+
+        <form method="post" asp-action="Login" class="admin-form">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+            <div asp-validation-summary="All" class="validation"></div>
+            <label>Email<input type="email" name="email" autocomplete="username" required /></label>
+            <label>Password<input type="password" name="password" autocomplete="current-password" required /></label>
+            <button class="btn primary" type="submit">Sign in</button>
+        </form>
+    </section>
+</main>
