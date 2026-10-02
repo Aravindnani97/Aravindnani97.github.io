@@ -1,0 +1,74 @@
+@model IReadOnlyList<AravindPortfolioMvc.Models.PortfolioMedia>
+@{
+    ViewData["Title"] = "Admin";
+}
+<main class="admin-shell wrap">
+    <div class="admin-topbar">
+        <div><p class="eyebrow">Owner Only</p><h1>Portfolio Admin</h1></div>
+        <form method="post" asp-action="Logout">@Html.AntiForgeryToken()<button class="btn" type="submit">Sign out</button></form>
+    </div>
+
+    @if (TempData["Success"] is string success){<div class="notice success">@success</div>}
+    @if (TempData["Error"] is string error){<div class="notice error">@error</div>}
+
+    <section class="admin-grid">
+        <article class="admin-card">
+            <h2>Upload new work</h2>
+            <form method="post" enctype="multipart/form-data" asp-action="Upload" class="admin-form">
+                @Html.AntiForgeryToken()
+                <label>Photo or video<input type="file" name="file" accept="image/*,video/mp4,video/webm,video/quicktime" required /></label>
+                <label>Title<input type="text" name="title" maxlength="120" placeholder="Golden hour portrait" /></label>
+                <label>Caption<textarea name="caption" maxlength="500" rows="4" placeholder="Short story or context"></textarea></label>
+                <label>Category<input type="text" name="category" maxlength="60" placeholder="Portrait / Travel / Street / Reel" /></label>
+                <label class="check"><input type="checkbox" name="published" value="true" checked /> Publish immediately</label>
+                <button class="btn primary" type="submit">Upload & save</button>
+                <p class="form-help">Images up to 20 MB. Videos up to 150 MB.</p>
+            </form>
+        </article>
+
+        <article class="admin-card">
+            <h2>Manage portfolio</h2>
+            @if (!Model.Any())
+            {
+                <p>No media uploaded yet.</p>
+            }
+            else
+            {
+                <div class="admin-media-list">
+                @foreach (var item in Model)
+                {
+                    <div class="admin-media-item">
+                        <div class="admin-thumb">
+                            @if (item.MediaType == "video")
+                            {
+                                <video src="@item.PublicUrl" preload="metadata" muted></video>
+                            }
+                            else
+                            {
+                                <img src="@item.PublicUrl" alt="" loading="lazy" />
+                            }
+                        </div>
+                        <div class="admin-media-info">
+                            <strong>@item.Title</strong>
+                            <small>@item.MediaType · @(item.Published ? "Published" : "Hidden")</small>
+                        </div>
+                        <div class="admin-actions">
+                            <form method="post" asp-action="SetPublished">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="id" value="@item.Id" />
+                                <input type="hidden" name="published" value="@(!item.Published)" />
+                                <button class="btn" type="submit">@(item.Published ? "Hide" : "Publish")</button>
+                            </form>
+                            <form method="post" asp-action="Delete" onsubmit="return confirm('Delete this media permanently?');">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="id" value="@item.Id" />
+                                <button class="btn danger" type="submit">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                }
+                </div>
+            }
+        </article>
+    </section>
+</main>
