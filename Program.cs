@@ -69,11 +69,11 @@ app.MapGet("/robots.txt", (HttpContext context) =>
 app.MapGet("/sitemap.xml", (HttpContext context) =>
 {
     var root = $"{context.Request.Scheme}://{context.Request.Host}";
-    var xml = $"""<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>{root}/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>{root}/Gallery</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-</urlset>""";
+    var xml = $"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+              $"<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n" +
+              $"  <url><loc>{root}/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>\n" +
+              $"  <url><loc>{root}/Gallery</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>\n" +
+              "</urlset>";
     return Results.Text(xml, "application/xml");
 });
 
