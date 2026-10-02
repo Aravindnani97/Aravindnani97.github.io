@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: aravind-mallaiahgari
+    name: aravindmallaiahgari
     runtime: docker
     plan: free
     autoDeploy: true
