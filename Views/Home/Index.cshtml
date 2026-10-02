@@ -1,4 +1,4 @@
-@{
+@model IReadOnlyList<AravindPortfolioMvc.Models.PortfolioMedia>\n@{
     ViewData["Title"] = "Software Engineer & Visual Creator";
 }
 <main id="top">
@@ -102,13 +102,36 @@
 
 <section class="creative reveal" id="creative"><div class="wrap">
   <div class="head"><p class="eyebrow">Cam Lens</p><h2>Photography & video editing.</h2><p class="lead">Frames, motion, color, and storytelling. The gallery is ready for your original work from @@camlens.img.</p></div>
-  <div class="tiles">
-    <a class="tile tilt reveal-item" data-tilt-strength="7" href="https://www.instagram.com/camlens.img/" target="_blank" rel="noopener noreferrer"><div><small>Photography</small><strong>Portraits & Moments</strong></div></a>
-    <a class="tile tilt reveal-item" data-tilt-strength="7" href="https://www.instagram.com/camlens.img/" target="_blank" rel="noopener noreferrer"><div><small>Color</small><strong>Cinematic Edits</strong></div></a>
-    <a class="tile tilt reveal-item" data-tilt-strength="7" href="https://www.instagram.com/camlens.img/" target="_blank" rel="noopener noreferrer"><div><small>Motion</small><strong>Short-form Video</strong></div></a>
-    <a class="tile tilt reveal-item" data-tilt-strength="7" href="https://www.instagram.com/camlens.img/" target="_blank" rel="noopener noreferrer"><div><small>Story</small><strong>Travel & Lifestyle</strong></div></a>
-  </div>
-  <div class="cta"><div><p class="eyebrow">Instagram Portfolio</p><b>@@camlens.img</b></div><a class="btn primary magnetic" href="https://www.instagram.com/camlens.img/" target="_blank" rel="noopener noreferrer">View Instagram ↗</a></div>
+  @if (Model.Any())
+  {
+    <div class="tiles live-tiles">
+      @foreach (var item in Model)
+      {
+        <a class="tile tilt reveal-item live-media-tile" data-tilt-strength="7" href="/Gallery">
+          @if (item.MediaType == "video")
+          {
+            <video src="@item.PublicUrl" muted playsinline preload="metadata"></video>
+            <span class="media-badge">Video</span>
+          }
+          else
+          {
+            <img src="@item.PublicUrl" alt="@item.Title" loading="lazy" />
+          }
+          <div>
+            <small>@(string.IsNullOrWhiteSpace(item.Category) ? item.MediaType : item.Category)</small>
+            <strong>@item.Title</strong>
+          </div>
+        </a>
+      }
+    </div>
+  }
+  else
+  {
+    <div class="tiles">
+      <a class="tile tilt reveal-item" data-tilt-strength="7" href="/Gallery"><div><small>Gallery</small><strong>Your work will appear here</strong></div></a>
+    </div>
+  }
+  <div class="cta"><div><p class="eyebrow">Portfolio Gallery</p><b>Latest published work</b></div><a class="btn primary magnetic" href="/Gallery">View full gallery ↗</a></div>
 </div></section>
 
 <section class="reveal"><div class="wrap">
