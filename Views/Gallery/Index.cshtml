@@ -1,0 +1,50 @@
+@model IReadOnlyList<AravindPortfolioMvc.Models.PortfolioMedia>
+@{
+    ViewData["Title"] = "Gallery";
+}
+<main class="gallery-page wrap">
+    <section class="gallery-hero reveal in-view">
+        <p class="eyebrow">Selected Work</p>
+        <h1>Photography & Video</h1>
+        <p class="lead">A living collection of published work from @@camlens.img.</p>
+    </section>
+
+    @if (ViewBag.Configured is bool configured && !configured)
+    {
+        <div class="panel"><h3>Gallery setup incomplete</h3><p>The site owner still needs to connect media storage.</p></div>
+    }
+    else if (!Model.Any())
+    {
+        <div class="panel empty-state"><h3>No published work yet.</h3><p>New work will appear here as it is published.</p></div>
+    }
+    else
+    {
+        <section class="media-grid">
+        @foreach (var item in Model)
+        {
+            <article class="media-card reveal-item in-view">
+                <div class="media-frame">
+                    @if (item.MediaType == "video")
+                    {
+                        <video controls preload="metadata" playsinline>
+                            <source src="@item.PublicUrl" />
+                        </video>
+                    }
+                    else
+                    {
+                        <img src="@item.PublicUrl" alt="@item.Title" loading="lazy" />
+                    }
+                </div>
+                <div class="media-copy">
+                    <div class="media-meta">
+                        <span>@item.MediaType</span>
+                        @if (!string.IsNullOrWhiteSpace(item.Category)){<span>@item.Category</span>}
+                    </div>
+                    <h3>@item.Title</h3>
+                    @if (!string.IsNullOrWhiteSpace(item.Caption)){<p>@item.Caption</p>}
+                </div>
+            </article>
+        }
+        </section>
+    }
+</main>
