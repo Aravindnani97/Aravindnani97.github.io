@@ -59,5 +59,23 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.MapGet("/robots.txt", (HttpContext context) =>
+{
+    var root = $"{context.Request.Scheme}://{context.Request.Host}";
+    var text = $"User-agent: *\nAllow: /\nDisallow: /Admin\nSitemap: {root}/sitemap.xml\n";
+    return Results.Text(text, "text/plain");
+});
+
+app.MapGet("/sitemap.xml", (HttpContext context) =>
+{
+    var root = $"{context.Request.Scheme}://{context.Request.Host}";
+    var xml = $"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>{root}/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>{root}/Gallery</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+</urlset>""";
+    return Results.Text(xml, "application/xml");
+});
+
 app.MapGet("/health", () => Results.Ok(new { status = "healthy" }));
 app.Run();
