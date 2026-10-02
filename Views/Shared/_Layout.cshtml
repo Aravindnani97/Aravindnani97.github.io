@@ -1,18 +1,72 @@
+@{
+    var siteRoot = $"{Context.Request.Scheme}://{Context.Request.Host}";
+    var canonicalUrl = $"{siteRoot}{Context.Request.Path}";
+    var isHome = Context.Request.Path == "/" || string.IsNullOrEmpty(Context.Request.Path);
+    var pageTitle = isHome
+        ? "Aravind Mallaiahgari | Full Stack .NET Developer, AI & Creative Portfolio"
+        : $"{ViewData["Title"]} | Aravind Mallaiahgari";
+    var description = "Official portfolio of Aravind Mallaiahgari, a Full Stack .NET Developer focused on ASP.NET Core, APIs, cloud, AI-enabled applications, photography, and video.";
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Aravind Mallaiahgari — Full Stack .NET Developer, AI-enabled application developer, photographer, and video editor." />
-    <meta name="keywords" content="Aravind Mallaiahgari,.NET Developer,C#,ASP.NET Core,React,JavaScript,Python,Java,AI,Generative AI,Photography,Video Editing,camlens.img" />
+    <title>@pageTitle</title>
+    <meta name="description" content="@description" />
     <meta name="author" content="Aravind Mallaiahgari" />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
     <meta name="theme-color" content="#07111f" />
-    <title>@ViewData["Title"] - Aravind Mallaiahgari</title>
+    <link rel="canonical" href="@canonicalUrl" />
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="@pageTitle" />
+    <meta property="og:description" content="@description" />
+    <meta property="og:url" content="@canonicalUrl" />
+    <meta property="og:site_name" content="Aravind Mallaiahgari" />
+    <meta property="profile:first_name" content="Aravind" />
+    <meta property="profile:last_name" content="Mallaiahgari" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "ProfilePage",
+      "url": "@siteRoot/",
+      "mainEntity": {
+        "@@type": "Person",
+        "@@id": "@siteRoot/#aravind-mallaiahgari",
+        "name": "Aravind Mallaiahgari",
+        "givenName": "Aravind",
+        "familyName": "Mallaiahgari",
+        "jobTitle": "Full Stack .NET Developer",
+        "url": "@siteRoot/",
+        "sameAs": [
+          "https://www.linkedin.com/in/aravind-mallaiahgari",
+          "https://github.com/Aravindnani97",
+          "https://www.instagram.com/camlens.img/"
+        ],
+        "knowsAbout": [
+          "ASP.NET Core",
+          "C#",
+          ".NET",
+          "REST APIs",
+          "React",
+          "Angular",
+          "Azure",
+          "AWS",
+          "Generative AI",
+          "Photography",
+          "Video Editing"
+        ]
+      }
+    }
+    </script>
+
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
     <div class="scroll-progress" aria-hidden="true"><span></span></div>
-
     <nav class="nav">
         <div class="wrap navin">
             <a class="brand-full" href="/#top">Aravind <span>Mallaiahgari</span></a>
